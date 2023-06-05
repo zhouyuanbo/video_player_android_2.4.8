@@ -9,6 +9,7 @@ import static com.google.android.exoplayer2.Player.REPEAT_MODE_OFF;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.Surface;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
@@ -199,6 +200,16 @@ final class VideoPlayer {
               isBuffering = buffering;
               Map<String, Object> event = new HashMap<>();
               event.put("event", isBuffering ? "bufferingStart" : "bufferingEnd");
+              eventSink.success(event);
+            }
+          }
+
+          @Override
+          public void onPositionDiscontinuity(Player.PositionInfo oldPosition, Player.PositionInfo newPosition, int reason) {
+            if(reason==Player.DISCONTINUITY_REASON_AUTO_TRANSITION){
+              Map<String, Object> event = new HashMap<>();
+              event.put("event", "loopPlaybackEnd");
+              event.put("isLoopPlaybackEnd", true);
               eventSink.success(event);
             }
           }

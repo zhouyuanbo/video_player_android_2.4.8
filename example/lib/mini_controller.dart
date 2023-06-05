@@ -354,6 +354,11 @@ class MiniController extends ValueNotifier<VideoPlayerValue> {
     return _platform.getPosition(_textureId);
   }
 
+  /// The position in the current video.
+  Future<void> setLooping(bool value) async {
+     _platform.setLooping(_textureId, value);
+  }
+
   /// Sets the video's current timestamp to be at [position].
   Future<void> seekTo(Duration position) async {
     if (position > value.duration) {

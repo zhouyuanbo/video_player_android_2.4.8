@@ -59,11 +59,15 @@ class _ButterFlyAssetVideoState extends State<_ButterFlyAssetVideo> {
   void initState() {
     super.initState();
     _controller = MiniController.asset('assets/Butterfly-209.mp4');
-
     _controller.addListener(() {
       setState(() {});
     });
-    _controller.initialize().then((_) => setState(() {}));
+    _controller.initialize().then((_) {
+      _controller.setLooping(true);
+      setState(() {
+
+      });
+    });
     _controller.play();
   }
 
@@ -118,6 +122,7 @@ class _BumbleBeeRemoteVideoState extends State<_BumbleBeeRemoteVideo> {
     );
 
     _controller.addListener(() {
+      _controller.setLooping(true);
       setState(() {});
     });
     _controller.initialize();

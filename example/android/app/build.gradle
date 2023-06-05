@@ -26,7 +26,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace 'io.flutter.plugins.videoplayerexample'
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -36,7 +36,7 @@ android {
     defaultConfig {
         applicationId "io.flutter.plugins.videoplayerexample"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
